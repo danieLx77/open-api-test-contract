@@ -1,7 +1,7 @@
 
-openapi: 3.0.3
+openapi: 3.0.3 # Versão da especificação
 
-info:
+info: # Inicia uma seção com informações gerais sobre a API
   title: Mini API de Produtos
   version: 1.0.0
   description: API para demonstrar testes de contrato.
@@ -9,20 +9,20 @@ info:
 servers:
   - url: http://localhost:3000
 
-paths:
+paths: # Definição dos endpoints
   /produtos/{id}:
     get:
       summary: Buscar produto por ID
       description: Retorna um produto cadastrado.
 
-      parameters:
+      parameters: # Quais parâmetros podem ou devem ser enviados para a operação
         - name: id
-          in: path
-          required: true
-          schema:
+          in: path # Faz parte da URL
+          required: true # Parâmetro obrigatório
+          schema: # Inicia a definição das características e restrições do parâmetro
             type: integer
 
-      responses:
+      responses: #Respostas possíveis da operação
         '200':
           description: Produto encontrado
           content:
@@ -37,7 +37,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Erro'
 
-components:
+components: # Início da seção de componentes reutilizáveis
   schemas:
     Produto:
       type: object
@@ -48,7 +48,7 @@ components:
         - preco
         - disponivel
 
-      properties:
+      properties: # Propriedades que podem aparecer no objeto produto
         id:
           type: integer
           example: 10

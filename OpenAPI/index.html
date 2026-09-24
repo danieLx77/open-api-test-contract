@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="Dinâmica colaborativa para investigar contratos OpenAPI e respostas JSON.">
+  <title>Detetives de Contratos</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#inicio" aria-label="Detetives de Contratos, início"><span class="brand-mark">{ }</span> Detetives <span class="brand-muted">/ contratos</span></a><span class="session-label"><i></i> Investigação em equipe</span></header>
+  <main id="app" tabindex="-1"></main>
+  <dialog id="contract-dialog" aria-labelledby="contract-title">
+    <div class="dialog-head"><div><p class="eyebrow">REFERÊNCIA DA INVESTIGAÇÃO</p><h2 id="contract-title">Contrato OpenAPI</h2></div><button class="icon-button" data-close-dialog aria-label="Fechar contrato">×</button></div>
+    <pre class="code yaml"><code>Produto:
+  type: object
+  required:
+    - id
+    - nome
+    - preco
+    - disponivel
+  properties:
+    id:
+      type: integer
+    nome:
+      type: string
+      minLength: 1
+    preco:
+      type: number
+      minimum: 0
+    disponivel:
+      type: boolean</code></pre>
+    <ul class="rules"><li><code>id</code> número inteiro obrigatório</li><li><code>nome</code> texto obrigatório, com pelo menos um caractere</li><li><code>preco</code> número obrigatório, maior ou igual a zero</li><li><code>disponivel</code> booleano obrigatório: <code>true</code> ou <code>false</code></li></ul>
+    <p class="muted small">O contrato não define <code>additionalProperties: false</code>; propriedades adicionais são aceitas por este schema.</p>
+  </dialog>
+</body>
+</html>
