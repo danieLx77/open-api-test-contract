@@ -1,0 +1,78 @@
+
+openapi: 3.0.3
+
+info:
+  title: Mini API de Produtos
+  version: 1.0.0
+  description: API para demonstrar testes de contrato.
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /produtos/{id}:
+    get:
+      summary: Buscar produto por ID
+      description: Retorna um produto cadastrado.
+
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Produto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+
+        '404':
+          description: Produto não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Erro'
+
+components:
+  schemas:
+    Produto:
+      type: object
+
+      required:
+        - id
+        - nome
+        - preco
+        - disponivel
+
+      properties:
+        id:
+          type: integer
+          example: 10
+
+        nome:
+          type: string
+          example: Notebook
+
+        preco:
+          type: number
+          minimum: 0
+          example: 3500.00
+
+        disponivel:
+          type: boolean
+          example: true
+
+    Erro:
+      type: object
+
+      required:
+        - mensagem
+
+      properties:
+        mensagem:
+          type: string
+          example: Produto não encontrado

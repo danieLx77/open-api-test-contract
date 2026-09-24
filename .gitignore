@@ -1,0 +1,16 @@
+# Dependências do Node.js
+node_modules/
+
+# Variáveis de ambiente
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Relatórios de testes
+coverage/
+
+# Arquivos do sistema
+.DS_Store
